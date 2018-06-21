@@ -1,0 +1,4 @@
+.idea
+tests/.vagrant
+tests/*.retry
+tests/*.log

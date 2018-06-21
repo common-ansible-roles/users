@@ -1,0 +1,19 @@
+---
+
+- hosts: all
+  become: no
+  vars:
+    linux_groups:
+      - name: "{{ ansible_user }}"
+    linux_users:
+      - name: root
+        group: root
+        shell: /bin/bash
+        ssh_keys:
+          - state: present
+            key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+      - name: "{{ ansible_user }}"
+        group: "{{ ansible_user }}"
+        shell: /bin/bash
+  roles:
+    - users
